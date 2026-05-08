@@ -1,0 +1,84 @@
+.output-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--code-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  min-height: 250px;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.output-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.copy-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-button:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.output-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.result-text {
+  /* This CSS property is crucial to preserve line breaks from the backend response */
+  white-space: pre-wrap; 
+  text-align: left;
+  line-height: 1.6;
+  color: var(--text-h);
+}
+
+.empty-state, 
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  color: var(--text);
+  min-height: 150px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
