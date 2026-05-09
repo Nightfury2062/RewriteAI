@@ -122,9 +122,3 @@ The app opens at `http://localhost:5173`.
 |-----------------|----------|--------------------------|
 | `GEMINI_API_KEY`| ✅       | Google Gemini API key    |
 | `PORT`          | Optional | Backend port (default 5000) |
-
----
-
-## License
-
-MIT
