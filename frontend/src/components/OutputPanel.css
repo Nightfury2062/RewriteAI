@@ -63,14 +63,19 @@
 
 .typing-cursor {
   display: inline-block;
-  margin-left: 2px;
-  color: var(--accent);
-  animation: blink 1s step-end infinite;
+  width: 8px;
+  height: 18px;
+  background-color: var(--accent);
+  margin-left: 4px;
+  border-radius: 2px;
+  opacity: 0.8;
+  animation: smoothBlink 1s infinite ease-in-out;
+  vertical-align: text-bottom;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+@keyframes smoothBlink {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.1; }
 }
 
 .empty-state, 

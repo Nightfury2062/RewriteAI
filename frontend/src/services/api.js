@@ -41,12 +41,11 @@ export const rewriteContent = async (data) => {
  */
 export const streamRewriteContent = async (data, onChunk) => {
   try {
-    // We use the native fetch API here because Axios does not natively support
-    // processing streaming chunks in the browser easily without plugins.
     const response = await fetch(`${API_BASE_URL}/api/process/stream`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'text/event-stream'
       },
       body: JSON.stringify(data),
     });
@@ -82,12 +81,11 @@ export const streamRewriteContent = async (data, onChunk) => {
         if (part.startsWith('data: ')) {
           // Extract the JSON string payload
           const jsonStr = part.slice(6);
-          let parsedData;
           
+          let parsedData;
           try {
             parsedData = JSON.parse(jsonStr);
           } catch (e) {
-            console.warn('Failed to parse SSE chunk:', e);
             continue;
           }
 
@@ -109,7 +107,6 @@ export const streamRewriteContent = async (data, onChunk) => {
       }
     }
   } catch (error) {
-    console.error('Streaming error in API service:', error);
     throw new Error(error.message || 'Failed to stream the response.');
   }
 };

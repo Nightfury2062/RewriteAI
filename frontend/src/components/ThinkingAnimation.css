@@ -1,0 +1,57 @@
+.thinking-animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  min-height: 150px;
+  flex-grow: 1;
+}
+
+.thinking-icon-wrapper {
+  animation: pulse 2s infinite ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thinking-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.thinking-text-wrapper {
+  display: flex;
+  align-items: center;
+  height: 24px; /* Fix height to prevent jumping */
+}
+
+.thinking-text {
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  font-style: italic;
+  white-space: pre;
+}
+
+.thinking-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background-color: var(--accent);
+  margin-left: 4px;
+  border-radius: 2px;
+  opacity: 0.8;
+  animation: smoothBlink 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+@keyframes smoothBlink {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.1; }
+}

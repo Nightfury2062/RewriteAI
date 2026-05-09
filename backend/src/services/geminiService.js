@@ -73,6 +73,7 @@ const generateRewriteStream = async function* (prompt) {
     // Iterate over the stream as chunks arrive
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
+      
       // Safely yield only non-empty strings
       if (chunkText && chunkText.length > 0) {
         yield chunkText;
