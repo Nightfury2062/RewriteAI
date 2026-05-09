@@ -25,6 +25,12 @@
   font-size: 1.25rem;
 }
 
+.output-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .copy-button {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
@@ -35,6 +41,27 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
+}
+
+.save-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--accent);
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .copy-button:hover:not(:disabled) {

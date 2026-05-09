@@ -110,3 +110,63 @@ export const streamRewriteContent = async (data, onChunk) => {
     throw new Error(error.message || 'Failed to stream the response.');
   }
 };
+
+/**
+ * Saves a completed rewrite item to the database.
+ * @param {Object} data - The payload: { originalText, rewrittenText, formality, tone, length }
+ * @returns {Promise<Object>} The newly created saved item from the database.
+ */
+export const saveRewriteItem = async (data) => {
+  try {
+    const response = await apiClient.post('/api/items', data);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || 'Failed to save the rewrite.');
+    } else if (error.request) {
+      throw new Error('Network error. Unable to reach the server.');
+    } else {
+      throw new Error(`Request failed: ${error.message}`);
+    }
+  }
+};
+
+/**
+ * Fetches all saved rewrite items from the database.
+ * @returns {Promise<Array>} An array of saved rewrite items, sorted newest first.
+ */
+export const fetchRewriteItems = async () => {
+  try {
+    const response = await apiClient.get('/api/items');
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || 'Failed to fetch saved rewrites.');
+    } else if (error.request) {
+      throw new Error('Network error. Unable to reach the server.');
+    } else {
+      throw new Error(`Request failed: ${error.message}`);
+    }
+  }
+};
+
+/**
+ * Deletes a saved rewrite item from the database by ID.
+ * @param {number} id - The unique ID of the item to delete.
+ * @returns {Promise<Object>} A success confirmation message.
+ */
+export const deleteRewriteItem = async (id) => {
+  try {
+    const response = await apiClient.delete(`/api/items/${id}`);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || 'Failed to delete the item.');
+    } else if (error.request) {
+      throw new Error('Network error. Unable to reach the server.');
+    } else {
+      throw new Error(`Request failed: ${error.message}`);
+    }
+  }
+};
+

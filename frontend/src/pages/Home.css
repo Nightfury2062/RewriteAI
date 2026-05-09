@@ -47,9 +47,21 @@
 }
 
 .panel-container {
-  flex: 1;
   display: flex;
   width: 100%;
+}
+
+/* Form and output columns share equal space */
+.panel-form,
+.panel-output {
+  flex: 1;
+}
+
+/* Sidebar is narrower — fixed max-width */
+.panel-sidebar {
+  flex: 0 0 300px;
+  min-width: 260px;
+  max-width: 320px;
 }
 
 /* Ensure components inside the panel-container can grow */
@@ -61,5 +73,9 @@
 @media (max-width: 1024px) {
   .home-content {
     flex-direction: column;
+  }
+  .panel-sidebar {
+    flex: 1 1 auto;
+    max-width: 100%;
   }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ThinkingAnimation from './ThinkingAnimation';
 import './OutputPanel.css';
 
-const OutputPanel = ({ result, loading, isStreaming }) => {
+const OutputPanel = ({ result, loading, isStreaming, onSave, isSaving, saveSuccess }) => {
   const [copied, setCopied] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
 
@@ -67,14 +67,24 @@ const OutputPanel = ({ result, loading, isStreaming }) => {
       <div className="output-header">
         <h2>Rewritten Content</h2>
         {result && !loading && (
-          <button 
-            className="copy-button" 
-            onClick={handleCopy}
-            title="Copy to clipboard"
-            disabled={isRevealing} // Prevent copying partial text while actively streaming/revealing
-          >
-            {copied ? 'Copied!' : 'Copy Text'}
-          </button>
+          <div className="output-header-actions">
+            <button
+              className="save-button"
+              onClick={() => onSave(result)}
+              disabled={isRevealing || isSaving}
+              title="Save this rewrite"
+            >
+              {saveSuccess ? '✓ Saved!' : isSaving ? 'Saving...' : 'Save'}
+            </button>
+            <button 
+              className="copy-button" 
+              onClick={handleCopy}
+              title="Copy to clipboard"
+              disabled={isRevealing}
+            >
+              {copied ? 'Copied!' : 'Copy Text'}
+            </button>
+          </div>
         )}
       </div>
 
