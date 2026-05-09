@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const processRoutes = require('./routes/processRoutes');
 const streamRoutes = require('./routes/streamRoutes');
+const itemRoutes = require('./routes/itemRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api/process/stream', streamRoutes);
 app.use('/api/process', processRoutes);
+app.use('/api/items', itemRoutes);
 
 // Global error handling middleware
 app.use(errorHandler);
