@@ -9,7 +9,7 @@ const RewriteForm = ({ onSubmit, loading }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text.trim()) return;
+    if (!text.trim() || text.length > 10000) return;
     
     onSubmit({
       text,
@@ -31,8 +31,8 @@ const RewriteForm = ({ onSubmit, loading }) => {
           rows={6}
           disabled={loading}
         />
-        <div className="char-count">
-          {text.length} character{text.length !== 1 ? 's' : ''}
+        <div className={`char-count ${text.length > 10000 ? 'char-count--error' : text.length > 9000 ? 'char-count--warn' : ''}`}>
+          {text.length}/10000
         </div>
       </div>
 
@@ -87,7 +87,7 @@ const RewriteForm = ({ onSubmit, loading }) => {
       <button 
         type="submit" 
         className="submit-button" 
-        disabled={loading || !text.trim()}
+        disabled={loading || !text.trim() || text.length > 10000}
       >
         {loading ? 'Rewriting...' : 'Rewrite Content'}
       </button>

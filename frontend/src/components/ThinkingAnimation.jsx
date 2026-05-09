@@ -28,11 +28,10 @@ const ThinkingAnimation = () => {
       if (displayedText.length === 0) {
         setIsDeleting(false);
         setMessageIndex((prev) => (prev + 1) % AI_STATUS_MESSAGES.length);
-        timeoutId = setTimeout(() => {}, 300); 
       } else {
         timeoutId = setTimeout(() => {
           setDisplayedText((prev) => prev.slice(0, -1));
-        }, 15); 
+        }, 15);
       }
     } else {
       if (displayedText.length === currentMessage.length) {

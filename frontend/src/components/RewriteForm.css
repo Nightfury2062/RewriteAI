@@ -46,6 +46,19 @@
   color: var(--text);
   text-align: right;
   margin-top: 0.25rem;
+  transition: color 0.2s;
+}
+
+/* Approaching limit: subtle amber warning */
+.char-count--warn {
+  color: #d97706;
+  font-weight: 600;
+}
+
+/* Over limit: clear red error */
+.char-count--error {
+  color: #dc2626;
+  font-weight: 700;
 }
 
 .controls-group {

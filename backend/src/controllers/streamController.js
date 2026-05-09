@@ -17,7 +17,7 @@ const streamRewriteResponse = async (req, res) => {
     'Connection': 'keep-alive',
   });
 
-  // VERY IMPORTANT FOR SSE
+  // Flush headers immediately so the browser knows the SSE connection is open
   if (res.flushHeaders) {
     res.flushHeaders();
   }
@@ -72,25 +72,14 @@ const streamRewriteResponse = async (req, res) => {
     res.end();
 
   } catch (error) {
-
-    console.error('==============================');
-    console.error('STREAM CONTROLLER ERROR');
-    console.error(error);
-    console.error('==============================');
+    console.error('Streaming controller error:', error);
 
     const userFriendlyMessage =
       error.message && error.message.includes('AI')
         ? error.message
         : 'An unexpected streaming error occurred. Please try again.';
 
-    res.write(
-      `data: ${JSON.stringify({
-        error: userFriendlyMessage
-      })}\n\n`
-    );
-
-    console.log('ERROR EVENT SENT TO FRONTEND');
-
+    res.write(`data: ${JSON.stringify({ error: userFriendlyMessage })}\n\n`);
     res.end();
   }
 };
