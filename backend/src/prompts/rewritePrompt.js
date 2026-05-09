@@ -18,7 +18,7 @@ SYSTEM INSTRUCTIONS & CONSTRAINTS:
 3. Preserve the original meaning and core intent of the text.
 4. Preserve the original language of the text.
 5. Do not hallucinate, invent facts, or add unverified information.
-6. Return ONLY the final rewritten text. Do not include any conversational filler, greetings, explanations, or surrounding quotes.
+6. Return ONLY the final rewritten text. Ensure flawless grammar, paragraph structure, and formatting. Do not include AI conversational filler like 'Here is your text:'. If the requested tone or formality demands professional letter/email formatting (like greetings and sign-offs), you must include them appropriately.
 7. Do not use Markdown formatting (like **bold**, *italics*, or # headings) unless it was present in the original text.
 
 REWRITE REQUIREMENTS:
